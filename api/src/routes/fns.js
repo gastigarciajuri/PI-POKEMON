@@ -18,7 +18,7 @@ const getApiInfo = async ()=>{
             }) 
             pokes.push(...auxPoke);
             link = pokeApi.next
-        } while (link != null && pokes.length < 40);
+        } while (link != null && pokes.length < 80);//(<-- SE LIMITA LA CANTIDAD DE POKEMONES TRAIDOS DE LA API)
         let pokeData = await Promise.all(pokes.map(async e =>{
             let pokemon = await axios.get(e.url);
             return {
@@ -45,7 +45,7 @@ const getApiInfo = async ()=>{
     };
 };
 
-//POKEMON ESPECIFICADO POR ID O POR NAME
+//POKEMON ESPECIFICADO POR ID O POR NAME⬇️
 async function getDetail(params) {
     try {
         const apiData = await axios.get(`https://pokeapi.co/api/v2/pokemon/${params}`);
@@ -87,14 +87,12 @@ const getDbInfo = async () =>{
 };
 
 //TRAER TODOS LOS POKEMONES, DB Y API...⬇️
-
 const getAllPokes = async () => {
     const apiInfo = await getApiInfo();
     const dbInfo = await getDbInfo();
     const allPokes = apiInfo.concat(dbInfo);
     return allPokes;
 };
-
 
 
 module.exports = {
