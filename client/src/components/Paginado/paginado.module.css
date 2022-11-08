@@ -13,13 +13,13 @@
 .number {
     text-align: center;
     list-style: none;
-    border: 1px solid #4604534d;
+    border: 1px solid #111111;
     border-radius: 50%;
     align-items: center;
     width: 30px;
     height: 30px;
     padding: 4px;
-    background-color: #1e0bf34d;
+    background-color: #D2D6EF;
 }
 
 .a {

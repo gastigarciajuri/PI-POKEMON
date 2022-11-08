@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useEffect } from 'react'; // useState,
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllPokemons} from '../../redux/actions';
 import Filters from '../Filters/Filters';
@@ -11,6 +11,7 @@ export default function Home() {
     const allPokes = useSelector((state) => state.pokemones);
     const [ currentPage, setCurrentPage ] = useState(1); //pagina actual
     const [ pokesPerPage, setPokesPerPage ] = useState(12); //pokemones por pagina
+    const [order, setOrder] = useState('')
     const indexLastPoke = currentPage * pokesPerPage; //indice del ultimo pokemon = 12
     const indexFirstPoke = indexLastPoke - pokesPerPage; //indice del primer pokemon = 0
     const currentPokes = allPokes.slice(indexFirstPoke, indexLastPoke); //devuelve el array de los pokes por pag?
@@ -35,7 +36,7 @@ export default function Home() {
             </button>
             <div>
                 <div>
-                    <Filters setCurrentPage={setCurrentPage} />
+                    <Filters setCurrentPage={setCurrentPage} setOrder={ setOrder } />
                 </div>
             </div>
             <div>
